@@ -1,0 +1,16 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+
+  mongo:
+    image: mongo:${MONGO_VERSION}
+    restart: always
+    container_name: ${CONTAINER_NAME}
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${ROOT_PASSWORD}
+    volumes:
+      - ./backup:/home/backup
+    ports:
+        - ${PORT}:27017
